@@ -20,10 +20,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use("/net", express.static(path.join(__dirname, 'public')));
+app.use("/net", express.static('public'));
 
-app.use('/', index);
-app.use('/users', users);
+app.use('/net', index);
+app.use('/net/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,5 @@
+[calvin] GET / 200 -
+[calvin] GET /stylesheets/style.css 200 -
+[calvin] GET /favicon.ico 404 -
+[calvin] GET / 200 -
+[calvin] GET / 200 -

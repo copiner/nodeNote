@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>netphone</title>
+</head>
+<script src="common/func.js"></script>
+<script src="common/zepto.min.js"></script>
+<body>
+<div id="info">net info<div>
+<script>
+var info = document.querySelector("#info");
+var appid= "ffe174e0-9ba9-4586-92c4-6976384c32b7";
+var appkey = "fbfbd738-9464-4784-b621-be51f250cf7c";
+
+var uu = puuid();
+console.log(uu);
+var timestamp = format();
+var auth = MD5(appid+timestamp+appkey);
+var uuid = uuid(24, 16);
+var unikey = "01001210" + uuid;
+
+var url = "http://120.52.120.106/net/users/phone";
+$.ajax({
+		type : 'GET',
+		async: false,
+		url  : url,
+		dataType : 'jsonp',
+		data : {
+      appid: appid,
+      unikey: unikey,
+      timestamp: timestamp,
+      auth: auth
+		},
+		jsonp: "callback",
+		success:function(data){
+			console.log(data);
+      info.innerHTML = JSON.stringify(data);
+			},
+		error:function(XMLHttpRequest, textStatus, errorThrown){
+			console.log("ajax error");
+		}
+});
+</script>
+</body>
+</html>
