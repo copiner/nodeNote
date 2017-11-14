@@ -1,0 +1,8 @@
+alter table T_CM_APP_INFO add PARTNER_TYPE int default 0 not null;
+alter table T_CM_APP_INFO add FIRST_KEY char(8) default '00000000' not null;
+alter table T_CM_APP_INFO add SECONDE_KEY char(8) default '00000000' not null;
+alter table T_CM_APP_INFO add distributeID char(2) default '00' not null;
+alter table T_CM_APP_INFO drop column distributeID;
+update T_CM_APP_INFO set PARTNER_TYPE="1",FIRST_KEY="abcdefgh",distributeID="10" where APP_ID="ffe174e0-9ba9-4586-92c4-6976384c32b7";
+alter table T_CM_APP_INFO modify PARTNER_TYPE int default 0 not null;
+select APP_ID,APP_KEY,PARTNER_TYPE,FIRST_KEY,SECONDE_KEY,distributeID from T_CM_APP_INFO;

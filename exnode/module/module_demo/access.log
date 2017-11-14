@@ -1,3 +1,0 @@
-[calvin] GET /calvin 404 -
-[calvin] GET /hello?from=app 404 app
-[calvin] GET /favicon.ico 404 -

@@ -1,3 +1,0 @@
-[calvin] GET /index 404 -
-[calvin] GET / 200 -
-[calvin] GET /stylesheets/style.css 200 -

@@ -2,7 +2,7 @@ var http = require('http'),
     fs = require('fs');
 
 function handle_incoming_request(req, res) {
-	
+
 	console.log("Incoming request: (" + req.method + ") " +req.url);
 
 	load_album_list(function (err, albums) {
@@ -17,25 +17,26 @@ function handle_incoming_request(req, res) {
 }
 
 function load_album_list(callback){
-	fs.readdir("./albums", function(err, file_list){
+	fs.readdir("albums/", function(err, file_list){
 		if(err) {
 			callback(err);
 			return;
 		}
-		
+
 		var dirs_only = [];
 		for(var i = 0; i < file_list.length; i++){
-			fs.stat("/albums" + file_list[i], function(err, stats){
-				if(err){
-					callback(err);
-					return;
-				}
-
-				if(stats.isDirectory())
-					dirs_only.push(file_list[i]);
-		});
+  			fs.stat("albums/" + file_list[i], function(err, stats){
+  				if(err){
+  					callback(err);
+  					return;
+  				}
+          console.log(i);//i==4 always
+          //console.log(file_list[i]);//undefined
+  				if(stats.isDirectory())
+  					dirs_only.push(file_list[i]);
+  		});
 		}
-		console.log(dirs_only);
+
 		callback(null, dirs_only);
 
 	});

@@ -2,15 +2,13 @@ var http = require('http'),
     url = require("url"),
     fs = require('fs');
 
-//    /albums.json
-//    /albums/italy.json
 
 function handle_incoming_request(req, res) {
-	
+
 	console.log("Incoming request: (" + req.method + ") " +req.url);
-	
+
 	req.parsed_url = url.parse(req.url, true);
-	//console.log(req.parsed_url);
+	console.log(req.parsed_url);
 
 	var core_url = req.parsed_url.pathname;
 	if(core_url == "/albums.json"){
@@ -59,7 +57,7 @@ function handle_get_albums(req, res){
 		}
 		res.writeHead(200, {"Content-Type": "application/json"});
 		res.end(JSON.stringify({ error: null,
- data: {album: {album_name: album_name, photos: photos}}}) + "\n");
+      data: {album: {album_name: album_name, photos: photos}}}) + "\n");
 	});
 
 }
@@ -69,26 +67,26 @@ function load_album_list(callback){
 	fs.readdir("albums/", function(err, file_list){
 	  if(err){
 	        callback(err);
-		return;		
+		return;
 	    }
 	    var dirs_only = [];
 	   (function iterator(i){
-		if(i >= file_list.length){
-			callback(null, dirs_only);
-			return;
-		}
-	
-		fs.stat("albums/"+ file_list[i], function (err, stats){
-			if(err){
-				callback(err);
-				return;
-			}
+    		if(i >= file_list.length){
+    			callback(null, dirs_only);
+    			return;
+    		}
 
-			if(stats.isFile())
-				dirs_only.push(file_list[i]);
-			iterator(i+1);
-		});
-	 })(0);
+    		fs.stat("albums/"+ file_list[i], function (err, stats){
+    			if(err){
+    				callback(err);
+    				return;
+    			}
+
+    			if(stats.isFile())
+    				dirs_only.push(file_list[i]);
+    			iterator(i+1);
+    		});
+    	 })(0);
 	});
 }
 
@@ -96,7 +94,7 @@ function load_album(album_name, page, page_size,  callback){
 	fs.readdir("albums/"+album_name,  function(err, file_list){
 	  if(err){
 	        callback(err);
-		return;		
+		return;
 	    }
 	    var files_only = [];
 	   (function iterator(i){
@@ -105,7 +103,7 @@ function load_album(album_name, page, page_size,  callback){
 			callback(null, photos);
 			return;
 		}
-	
+
 		fs.stat("albums/"+ album_name+ "/"+ file_list[i], function (err, stats){
 			if(err){
 				callback(err);

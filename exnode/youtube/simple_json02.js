@@ -2,7 +2,7 @@ var http = require('http'),
     fs = require('fs');
 
 function handle_incoming_request(req, res) {
-	
+
 	console.log("Incoming request: (" + req.method + ") " +req.url);
 
 	load_album_list(function (err, albums) {
