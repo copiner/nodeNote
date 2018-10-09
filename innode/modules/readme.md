@@ -1,3 +1,16 @@
+
+### CommonJs
+
+在 Node.js 模块系统中，每个文件都被视为独立的模块
+
+在执行模块代码之前，Node.js 会使用一个如下的函数包装器将其包装：
+
+```
+(function(exports, require, module, __filename, __dirname) {
+// 模块的代码实际上在这里
+});
+```
+
 每一个node.js执行文件，都自动创建一个module对象，同时，module对象会创建一个叫exports的属性，初始化的值是 {}
 为了方便，模块中会有一个exports对象和module.exports指向同一块内存。所以初始状态下：
 
@@ -24,7 +37,7 @@ module.exports.b = function () {
 }
 ```
 
-###使用exports
+### 使用exports
 
 app.js
 ```
@@ -45,7 +58,7 @@ module.exports.log = function (str) {
 }
 ```
 
-###使用module.exports
+### 使用module.exports
 
 app.js
 ```
@@ -77,4 +90,4 @@ exports.a = 1
 module.exports通过赋值方式已经和exports对象指向的内存不同了，exports对象的修改不会影响到module.exports对象了。
 
 
- - [workshop](https://github.com/copiner/workshop) - A workshop to learn the basics of node.
+ - [workshop](https://github.com/copiner/chello) - A workshop to learn the basics of node.
