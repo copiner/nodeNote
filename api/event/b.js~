@@ -1,0 +1,7 @@
+
+var events = require('event');
+var util = require('util');
+
+var Person = function(name){
+    this.name = name;
+}

@@ -1,0 +1,5 @@
+var fs = require("fs");
+
+fs.unlink('./stuff/d.txt',function(){
+    fs.rmdir('stuff');
+})

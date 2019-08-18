@@ -1,0 +1,4 @@
+
+var counter = require("./a");
+
+console.log(counter(['xjx','wds','bao']));
