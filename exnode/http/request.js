@@ -4,8 +4,8 @@ console.log("APIGET...");
   var op = {
     host: "127.0.0.1",
     port: "3000",
-    method:'GET',
-    path:url,
+    method: 'GET',
+    path: url,
     headers:{
         'accept': '*/*',
         'content-type': "application/json",
