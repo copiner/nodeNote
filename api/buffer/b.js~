@@ -1,0 +1,10 @@
+
+/*
+  fill(value,start,end);
+*/
+let buf = Buffer.alloc(3);
+
+buf.fill(1);
+console.log(buf);
+
+let 

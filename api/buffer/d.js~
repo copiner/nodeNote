@@ -1,0 +1,3 @@
+
+let a = Buffer.alloc(6);
+let b = Buffer.from("你好","utf8");
