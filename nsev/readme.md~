@@ -1,0 +1,4 @@
+
+nohup 是 no hang up 的缩写，就是不挂断的意思
+
+nohup node app.js &
